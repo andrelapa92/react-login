@@ -8,8 +8,6 @@ const Cadastro = () => {
 
   let navigate = useNavigate();
 
-  const {id} = useParams();
-
   const [user, setUser] = useState({
       name: "",
       email: "",
@@ -22,8 +20,8 @@ const Cadastro = () => {
 
   const sendForm = async (e) => {
     e.preventDefault();
-    await UsersService.create(id)
-    navigate("/users");
+    await UsersService.create(user)
+    navigate("/login");
   };
 
 
@@ -35,15 +33,17 @@ const Cadastro = () => {
             </div>
             <div className="col-md-6">
               <h6 className='text1 text-center mb-4'>Preencha seus dados:</h6>
-              <label htmlFor="name"><strong>Nome</strong></label>
-              <Input className='input mt-3 mb-4' name='name' placeholder="Digite seu nome" onChange={(e) => onInputChange(e)} />
-              <label htmlFor="email"><strong>E-mail</strong></label>
-              <Input className='input mt-3 mb-4' name='email' placeholder="Digite seu e-mail" onChange={(e) => onInputChange(e)} />
-              <label htmlFor="pass"><strong>Senha</strong></label>
-              <Input className='input mt-3 mb-4' name='pass' placeholder="Cadastre uma senha" onChange={(e) => onInputChange(e)} />
-              <div className='text-center'>
-                <button className='navlink botao rounded-pill px-5' onClick={e => this.save(e)}>Cadastrar</button>
-              </div>
+              <form onSubmit={e => sendForm(e)}>
+                <label htmlFor="name"><strong>Nome</strong></label>
+                <Input className='input mt-3 mb-4' name='name' placeholder="Digite seu nome" onChange={(e) => onInputChange(e)} required />
+                <label htmlFor="email"><strong>E-mail</strong></label>
+                <Input className='input mt-3 mb-4' name='email' placeholder="Digite seu e-mail" onChange={(e) => onInputChange(e)} required />
+                <label htmlFor="pass"><strong>Senha</strong></label>
+                <Input className='input mt-3 mb-4' name='pass' placeholder="Cadastre uma senha" onChange={(e) => onInputChange(e)} required />
+                <div className='text-center'>
+                  <button type='submit' className='navlink botao rounded-pill px-5'>Cadastrar</button>
+                </div>
+              </form>
             </div>
           </div>
         </Container>
