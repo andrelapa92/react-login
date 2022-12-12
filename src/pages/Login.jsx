@@ -1,5 +1,5 @@
 import { Container } from 'react-bootstrap';
-import { Input } from 'antd';
+import { Input, Button } from 'antd';
 
 const Login = () => {
     return (
@@ -15,7 +15,7 @@ const Login = () => {
               <label htmlFor="passInput"><strong>Senha</strong></label>
               <Input className='mt-3 mb-4' name='passInput' placeholder="Digite sua senha" />
               <div className='text-center'>
-                <button className='navlink botao rounded-pill px-5'>Entrar</button>
+                <Button className='navlink botao rounded-pill px-5'>Entrar</Button>
               </div>
             </div>
           </div>

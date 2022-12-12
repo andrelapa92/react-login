@@ -8,11 +8,13 @@
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-inline: 10px;
 }
   
 .navlink:hover {
-    background-color: white;
-    color: #00C1B3;
+    background-color: white !important;
+    color: #00C1B3 !important;
+    border-color: #00C1B3 !important;
 }
 
 .navbar {

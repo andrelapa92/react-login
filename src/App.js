@@ -5,7 +5,9 @@ import Layout from './pages/Layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Cadastro from './pages/Cadastro';
+import Admin from './pages/Admin';
 import NoPage from './pages/NoPage';
+import EditUser from './pages/EditUser';
 
 export default function App() {
   
@@ -17,6 +19,8 @@ export default function App() {
             <Route index element = {<Home />} />
             <Route path = "login" element = {<Login />} />
             <Route path = "cadastro" element = {<Cadastro />} />
+            <Route path = "cadastro/:id" element = {<EditUser />} />
+            <Route path = "admin" element = {<Admin />} />
             <Route path = "*" element = {<NoPage />} />
           </Route>
         </Routes>

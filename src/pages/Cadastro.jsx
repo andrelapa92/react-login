@@ -1,10 +1,10 @@
 import { Container } from 'react-bootstrap';
-import { Input } from 'antd';
-import { useNavigate, Link, useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { Input, Button } from 'antd';
+import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import UsersService from '../service/UsersService';
 
-const Cadastro = () => {
+export default function Cadastro() {
 
   let navigate = useNavigate();
 
@@ -16,7 +16,7 @@ const Cadastro = () => {
 
   const onInputChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-};
+  };
 
   const sendForm = async (e) => {
     e.preventDefault();
@@ -24,8 +24,8 @@ const Cadastro = () => {
     navigate("/login");
   };
 
-
   return (
+
     <>
         <Container>
           <div className="row">
@@ -41,14 +41,14 @@ const Cadastro = () => {
                 <label htmlFor="pass"><strong>Senha</strong></label>
                 <Input className='input mt-3 mb-4' name='pass' placeholder="Cadastre uma senha" onChange={(e) => onInputChange(e)} required />
                 <div className='text-center'>
-                  <button type='submit' className='navlink botao rounded-pill px-5'>Cadastrar</button>
+                  <Button type='submit' className='navlink botao rounded-pill px-5'>Cadastrar</Button>
                 </div>
               </form>
             </div>
           </div>
         </Container>
       </>
+
   );
+
 };
-  
-export default Cadastro;

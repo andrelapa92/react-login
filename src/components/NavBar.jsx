@@ -2,13 +2,17 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from "react-router-dom";
+import NavlinkAdmin from './NavlinkAdmin';
 
-function CustomNavbar() {
+export default function CustomNavbar() {
+
   return (
+
     <>
       <Navbar className='navbar'>
-        <Container>
-          <Link to="/" className='navlink rounded-pill justify-content-start'>Home</Link>
+        <Container className='d-inline'>
+          <Link to="/" className='navlink rounded-pill'>Home</Link>
+          <NavlinkAdmin />
         </Container>
         <Container className='d-flex justify-content-end'>
           <Nav>
@@ -20,7 +24,7 @@ function CustomNavbar() {
       </Navbar>
       <br />
     </>
+    
   );
-}
 
-export default CustomNavbar;
+}
