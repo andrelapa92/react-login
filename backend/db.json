@@ -1,0 +1,13 @@
+{
+    "users" : [{
+        "id": 1,
+        "name": "André Luiz de Carvalho Lapa",
+        "email": "andrelapa92@gmail.com",
+        "senha": "abc123"
+    }, {
+        "id": 2,
+        "name": "Douglas Dias Claumann",
+        "email": "doug@gmail.com",
+        "senha": "cba321"
+    }]
+}

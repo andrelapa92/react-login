@@ -6,15 +6,15 @@ import { Link } from "react-router-dom";
 function CustomNavbar() {
   return (
     <>
-      <Navbar bg="primary" variant="dark">
+      <Navbar className='navbar'>
         <Container>
-          <Link to="/" className='text-light navlink rounded-pill justify-content-start'>Home</Link>
+          <Link to="/" className='navlink rounded-pill justify-content-start'>Home</Link>
         </Container>
         <Container className='d-flex justify-content-end'>
           <Nav>
-            <Link to="/login" className='text-light navlink rounded-pill'>Login</Link>
+            <Link to="/login" className='navlink rounded-pill'>Login</Link>
             <div className="vr text-light"></div>
-            <Link to="/cadastro" className='text-light navlink rounded-pill'>Cadastrar usuário</Link>
+            <Link to="/cadastro" className='navlink rounded-pill'>Cadastro</Link>
           </Nav>
         </Container>
       </Navbar>

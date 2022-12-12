@@ -4,11 +4,25 @@
   
 .navlink {
     text-decoration: none;
+    color: white;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
 }
   
 .navlink:hover {
-    background-color: blue;
+    background-color: white;
+    color: #00C1B3;
+}
+
+.navbar {
+    background-color: #00C1B3;
+}
+
+.text1 {
+    font-size: large;
+}
+
+.botao {
+    background-color: #00C1B3;
 }
