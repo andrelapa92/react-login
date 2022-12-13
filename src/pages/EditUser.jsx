@@ -3,6 +3,7 @@ import { Input, Button } from 'antd';
 import { useNavigate, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import UsersService from '../service/UsersService';
+import { Link } from 'react-router-dom';
 
 export default function EditUser() {
 
@@ -21,15 +22,15 @@ export default function EditUser() {
     };
 
     const sendForm = async (e) => {
-    e.preventDefault();
-    await UsersService.update(id, user)
-    navigate("/admin");
+        e.preventDefault();
+        await UsersService.update(id, user)
+        navigate("/admin");
     };
 
     const loadUser = async() => {
         const result = await UsersService.get(id)
         setUser(result.data);
-      }
+    }
 
     useEffect(() => {
         loadUser();
@@ -50,10 +51,12 @@ export default function EditUser() {
                 <label htmlFor="email"><strong>E-mail</strong></label>
                 <Input className='input mt-3 mb-4' name='email' placeholder="Digite o e-mail" onChange={(e) => onInputChange(e)} required value={user.email} />
                 <label htmlFor="pass"><strong>Senha</strong></label>
-                <Input className='input mt-3 mb-4' name='pass' placeholder="Cadastre uma senha" onChange={(e) => onInputChange(e)} required value={user.pass} />
+                <Input className='input mt-3 mb-4' name='pass' type='password' placeholder="Cadastre uma senha" onChange={(e) => onInputChange(e)} required value={user.pass} />
                 <div className='text-center'>
-                    <Button type='submit' className='navlink botao rounded-pill px-5'>Salvar</Button>
-                    <Button danger className='rounded-pill px-5'>Cancelar</Button>
+                    <Button htmlType='submit' type='submit' className='navlink botao rounded-pill px-5'>Salvar</Button>
+                    <Link to={'/admin'}>
+                        <Button type='primary' danger className='botaoDanger rounded-pill px-5'>Cancelar</Button>
+                    </Link>
                 </div>
                 </form>
             </div>

@@ -46,7 +46,7 @@ export default function Admin() {
                             <Button className='mx-1 botao navlink'>Editar</Button>
                         </Link>
                         
-                        <Button className='mx-1' type='primary' danger
+                        <Button className='mx-1 botaoDanger' type='primary' danger
                         onClick={() => removeUser(record.id)}>Deletar</Button>
                     </>
                 )
@@ -60,7 +60,10 @@ export default function Admin() {
                 <h1 className='display-6 text-center mb-3'>Administrar usuários</h1>
                 <div>
                     <Table
-                    rowKey = { record => record.id } dataSource = { users } columns = { columns } />
+                    rowKey = { record => record.id }
+                    dataSource = { users }
+                    columns = { columns }
+                    />
                 </div>
             </Container>
         </>
