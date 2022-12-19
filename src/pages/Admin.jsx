@@ -58,10 +58,10 @@ export default function Admin() {
             render : (record) => (
                 <>
                     <Link to={`/cadastro/${record.id}`}>
-                        <Button className='mx-1 botao navlink'>Editar</Button>
+                        <Button className='mx-1 botao navlink my-1'>Editar</Button>
                     </Link>
                     
-                    <Button className='mx-1 botaoDanger' type='primary' danger
+                    <Button className='mx-1 botaoDanger my-1' type='primary' danger
                     onClick={() => { handleClick(record.id) }}>Deletar</Button>
                 </>
             )

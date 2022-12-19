@@ -1,17 +1,24 @@
 import { createContext, useEffect, useState } from "react";
+import UsersService from "../service/UsersService";
 
 export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
 
+  const loadUsers = async () => {
+      const resultado = await UsersService.getAll();
+      setUser(resultado.data);
+  }
+  console.log(user);
+
   useEffect(() => {
-    const userToken = localStorage.getItem("user_token");
-    const usersStorage = localStorage.getItem("users_bd");
+    const userToken = user.token;
+    const usersStorage = user.email;
 
     if (userToken && usersStorage) {
-      const hasUser = JSON.parse(usersStorage)?.filter(
-        (user) => user.email === JSON.parse(userToken).email
+      const hasUser = usersStorage?.filter(
+        (user) => user.email === userToken.email
       );
 
       if (hasUser) setUser(hasUser[0]);
@@ -19,7 +26,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const signin = (email, password) => {
-    const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
+    const usersStorage = user;
 
     const hasUser = usersStorage?.filter((user) => user.email === email);
 

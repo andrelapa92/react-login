@@ -5,13 +5,14 @@
       "name": "André Luiz de Carvalho Lapa",
       "email": "andrelapa92@gmail.com",
       "senha": "abc123",
-      "pass": "hrdhrsd"
+      "token": ""    
     },
     {
       "id": 2,
       "name": "Douglas Dias Claumann",
       "email": "doug@gmail.com",
-      "senha": "cba321"
+      "senha": "cba321",
+      "token": "" 
     }
   ]
 }
