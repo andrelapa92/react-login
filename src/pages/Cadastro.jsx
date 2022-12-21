@@ -11,8 +11,7 @@ export default function Cadastro() {
   const [user, setUser] = useState({
       nome: "",
       email: "",
-      senha: "",
-      token: ""
+      senha: ""
   });
 
   const onInputChange = (e) => {

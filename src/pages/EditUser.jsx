@@ -14,8 +14,7 @@ export default function EditUser() {
     const [user, setUser] = useState({
         nome: "",
         email: "",
-        senha: "",
-        token: ""
+        senha: ""
     });
 
     const onInputChange = (e) => {
