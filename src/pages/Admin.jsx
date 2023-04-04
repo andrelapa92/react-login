@@ -3,8 +3,11 @@ import { useState, useEffect } from "react";
 import UsersService from '../service/UsersService';
 import { Table, Button, Modal, Spin, Alert } from 'antd';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 export default function Admin() {
+
+    let navigate = useNavigate();
 
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -20,6 +23,7 @@ export default function Admin() {
             console.error("Ops! Ocorreu um erro: " + err);
             setLoading(false);
             setError("Ops! Ocorreu um erro ao carregar os usuários.");
+            navigate("/login");
         }
     }
 
