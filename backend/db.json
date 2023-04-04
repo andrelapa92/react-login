@@ -4,13 +4,19 @@
       "id": 1,
       "nome": "André Luiz de Carvalho Lapa",
       "email": "andrelapa92@gmail.com",
-      "senha": "abc123"   
+      "senha": "abc"
     },
     {
       "id": 2,
-      "name": "Douglas Dias Claumann",
+      "nome": "Douglas Dias Claumann",
       "email": "doug@gmail.com",
       "senha": "cba321"
+    },
+    {
+      "id": 3,
+      "nome": "Teste 123",
+      "email": "teste@testando.com",
+      "senha": "vghyfd"
     }
   ]
 }

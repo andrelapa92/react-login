@@ -1,37 +1,44 @@
 import { Container } from 'react-bootstrap';
 import { useState, useEffect } from "react";
 import UsersService from '../service/UsersService';
-import { Table, Button, Modal } from 'antd';
+import { Table, Button, Modal, Spin, Alert } from 'antd';
 import { Link } from 'react-router-dom';
 
 export default function Admin() {
 
-    const [users, setUsers] = useState();
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const token = localStorage.getItem('token');
 
-    const loadUsers = async () => {
-        const resultado = await UsersService.getAll();
-        setUsers(resultado.data);
+    const loadUsers = async (token) => {
+        try {
+            const resultado = await UsersService.admin(token);
+            setUsers(resultado.data.users);
+            setLoading(false);
+        } catch (err) {
+            console.error("Ops! Ocorreu um erro: " + err);
+            setLoading(false);
+            setError("Ops! Ocorreu um erro ao carregar os usuários.");
+        }
     }
 
     useEffect(() => {
-        loadUsers()
-          .catch((err) => {
-            console.error("ops! ocorreu um erro" + err);
-          });
-    }, []);
+        loadUsers(token);
+    }, [token]);
 
     //modal Confirm (Ant Design)
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isUserId, setUserId] = useState();
 
     const handleClick = async (id) => {
-        setIsModalOpen(true)
+        setIsModalOpen(true);
         setUserId(id);
     };
 
     const handleOk = async () => {
         await UsersService.delete(isUserId);
-        loadUsers();
+        loadUsers(token);
         setIsModalOpen(false);
     };
 
@@ -43,13 +50,18 @@ export default function Admin() {
     const columns = [ 
         {
             title : 'Nome' , 
-            dataIndex : 'name' , 
-            key : 'name' , 
+            dataIndex : 'nome' , 
+            key : 'nome' , 
         },
         {
             title : 'E-mail' , 
             dataIndex : 'email' , 
             key : 'email' , 
+        },
+        {
+            title : 'Senha' , 
+            dataIndex : 'senha' , 
+            key : 'senha' , 
         },
         {
             title : 'Ações' , 
@@ -68,10 +80,22 @@ export default function Admin() {
         }
     ];
 
-    return (
+    if (loading) {
+        return (
+            <Spin size="large" style={{ marginTop: 50 }} />
+        );
+    }
 
+    if (error) {
+        return (
+            <Alert message={error} type="error" style={{ marginTop: 50 }} />
+        );
+    }
+
+    return (
         <>
             <Container>
+
                 <h1 className='display-6 text-center mb-3'>Administrar usuários</h1>
                 <div>
                     <Table
@@ -91,7 +115,7 @@ export default function Admin() {
                 onCancel={() => {
                     handleCancel();
                 }}>
-                <p>Vecê tem certeza que deseja excluir este usuário?</p>
+                <p>Você tem certeza que deseja excluir este usuário?</p>
             </Modal>
         </>
 

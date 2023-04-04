@@ -9,7 +9,11 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "json-server": "^0.17.2"
+  },
   "dependencies": {
-    "json-server": "0.13.0"
+    "cors": "^2.8.5",
+    "jsonwebtoken": "^9.0.0"
   }
 }

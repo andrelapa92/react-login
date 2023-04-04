@@ -9,6 +9,7 @@ export default function Cadastro() {
   let navigate = useNavigate();
 
   const [user, setUser] = useState({
+      id: "",
       nome: "",
       email: "",
       senha: ""

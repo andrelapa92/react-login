@@ -46,18 +46,18 @@ export default function EditUser() {
             <div className="col-md-6">
                 <h6 className='text1 text-center mb-4'>Altere os dados do usuário:</h6>
                 <form onSubmit={e => sendForm(e)}>
-                <label htmlFor="nome"><strong>Nome</strong></label>
-                <Input className='input mt-3 mb-4' name='nome' placeholder="Digite o nome" onChange={(e) => onInputChange(e)} required value={user.name} />
-                <label htmlFor="email"><strong>E-mail</strong></label>
-                <Input className='input mt-3 mb-4' name='email' placeholder="Digite o e-mail" onChange={(e) => onInputChange(e)} required value={user.email} />
-                <label htmlFor="senha"><strong>Senha</strong></label>
-                <Input className='input mt-3 mb-4' name='senha' type='password' placeholder="Cadastre uma senha" onChange={(e) => onInputChange(e)} required value={user.pass} />
-                <div className='text-center'>
-                    <Button htmlType='submit' type='submit' className='navlink botao rounded-pill px-5'>Salvar</Button>
-                    <Link to={'/admin'}>
-                        <Button type='primary' danger className='botaoDanger rounded-pill px-5'>Cancelar</Button>
-                    </Link>
-                </div>
+                    <label htmlFor="nome"><strong>Nome</strong></label>
+                    <Input className='input mt-3 mb-4' name='nome' placeholder="Digite o nome" onChange={(e) => onInputChange(e)} required value={user.nome} />
+                    <label htmlFor="email"><strong>E-mail</strong></label>
+                    <Input className='input mt-3 mb-4' name='email' placeholder="Digite o e-mail" onChange={(e) => onInputChange(e)} required value={user.email} />
+                    <label htmlFor="senha"><strong>Senha</strong></label>
+                    <Input className='input mt-3 mb-4' name='senha' type='password' placeholder="(Opcional) Altere sua senha" onChange={(e) => onInputChange(e)} value={user.pass} />
+                    <div className='text-center'>
+                        <Button htmlType='submit' type='submit' className='navlink botao rounded-pill px-5'>Salvar</Button>
+                        <Link to={'/admin'}>
+                            <Button type='primary' danger className='botaoDanger rounded-pill px-5'>Cancelar</Button>
+                        </Link>
+                    </div>
                 </form>
             </div>
             </div>

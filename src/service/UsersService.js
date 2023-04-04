@@ -1,25 +1,37 @@
 import api from "./api";
 
 class UsersService{
-    
-    getAll(){
+  
+    getAll() {
         return api.get("/users");
     }
 
-    get(id){
+    get(id) {
         return api.get(`/users/${id}`);
     }
 
-    create(user){
+    create(user) {
         return api.post("/users", user);
     }
 
-    update(id, user){
+    update(id, user) {
         return api.put(`/users/${id}`, user);
     }
 
-    delete(id){
+    delete(id) {
         return api.delete(`/users/${id}`);
+    }
+
+    login(user) {
+        return api.post("/login", user);
+    }
+
+    admin(token) {
+        return api.get("/admin", {
+          headers: {
+            "x-access-token": token
+          }
+        });
     }
 
 }
