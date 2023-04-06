@@ -20,6 +20,50 @@ app.get('/users', (req, res) => {
   res.send(users);
 });
 
+app.get('/users/:id', (req, res) => {
+  const id =+ req.params.id;
+  const user = users.find(u => u.id === id);
+  if (user) {
+    return res.send(user);
+  }
+  res.status(404).json({ message: 'Usuário não encontrado.' });
+});
+
+// Rota para criar um usuário
+app.post('/users', (req, res) => {
+  const { nome, email, senha } = req.body;
+  const id = users.length + 1;
+  const newUser = { id, nome, email, senha };
+  users.push(newUser);
+  res.status(201).json(newUser);
+});
+
+// Rota para atualizar um usuário
+app.put('/users/:id', (req, res) => {
+  const id = req.params.id;
+  const userIndex = users.findIndex(u => u.id === parseInt(id));
+  if (userIndex === -1) {
+    return res.status(404).json({ message: 'Usuário não encontrado.' });
+  }
+  const { nome, email, senha } = req.body;
+  users[userIndex] = { id: parseInt(id), nome, email, senha };
+  res.json(users[userIndex]);
+});
+
+// Rota para remover um usuário
+app.delete('/users/:id', (req, res) => {
+  const id = req.params.id;
+  const userIndex = users.findIndex(u => u.id === parseInt(id));
+  if (userIndex === -1) {
+    return res.status(404).json({ message: 'Usuário não encontrado.' });
+  }
+  const user = users[userIndex];
+  users.splice(userIndex, 1);
+  res.json(user);
+});
+
+
+
 // Middleware para verificação de token
 function verifyToken(req, res, next) {
   const token = req.headers['x-access-token'];

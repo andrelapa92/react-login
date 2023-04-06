@@ -23,12 +23,12 @@ export default function EditUser() {
 
     const sendForm = async (e) => {
         e.preventDefault();
-        await UsersService.update(id, user)
+        await UsersService.update(id, user);
         navigate("/admin");
     };
 
     const loadUser = async() => {
-        const result = await UsersService.get(id)
+        const result = await UsersService.get(id);
         setUser(result.data);
     }
 
