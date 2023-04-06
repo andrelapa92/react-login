@@ -20,7 +20,6 @@ export default function Admin() {
             setUsers(resultado.data.users);
             setLoading(false);
         } catch (err) {
-            console.error("Ops! Ocorreu um erro: " + err);
             setLoading(false);
             setError("Ops! Ocorreu um erro ao carregar os usuários.");
             navigate("/login");

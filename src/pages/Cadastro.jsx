@@ -33,7 +33,7 @@ export default function Cadastro() {
     await UsersService.create(user);
     success(); //executa mensagem de cadastro realizado
     setTimeout(() => {
-      navigate("/login");
+      navigate("/admin");
     }, "1500")
   };
 
